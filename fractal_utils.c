@@ -6,7 +6,7 @@
 /*   By: kato <kato@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 21:00:00 by kato              #+#    #+#             */
-/*   Updated: 2025/05/09 01:15:09 by kato             ###   ########.fr       */
+/*   Updated: 2025/05/09 19:23:39 by kato             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,16 @@ int	get_color(int iter, int max_iter)
 int	calculate_fractal(t_complex z, t_complex c, int max_iter)
 {
 	int	iter;
+	double	tmp;
 
 	iter = 0;
 	while (iter < max_iter)
 	{
 		if (z.re * z.re + z.im * z.im > 4.0)
 			return (iter);
+		tmp = z.re;
 		z.re = z.re * z.re - z.im * z.im + c.re;
-		z.im = 2.0 * z.re * z.im + c.im;
+		z.im = 2.0 * tmp * z.im + c.im;
 		iter++;
 	}
 	return (max_iter);
